@@ -30,3 +30,7 @@ videoId: guMmZrnFx70
 You can then embed the video on the page.
 
 ![Instructions4](https://user-images.githubusercontent.com/72106175/236707598-d24eceea-abe9-4392-8dac-33d36322eede.png)
+
+# UML Diagram
+![Microservice - Sequence diagram](https://user-images.githubusercontent.com/72106175/236708293-b06d997f-7397-43ce-8512-b4cbed06c04d.png)
+
