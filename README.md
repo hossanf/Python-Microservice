@@ -54,6 +54,7 @@ Example of what you recieve:
 
 ![Response](https://user-images.githubusercontent.com/72106175/236708733-d41f10b2-b1d6-4cbd-b12f-01e737356935.png)
 
+You need to parse the response.json() object.
 
 You can then embed the video on the page.
 
