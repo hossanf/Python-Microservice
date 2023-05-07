@@ -1,9 +1,9 @@
 # CS-361: Software Engineering
 
 
-Microservice Request and Recieve Instructions: 
+<font size="4"> Microservice Request and Recieve Instructions: 
 
-Here are some links to documentation: \
+Here are some helpful links to documentation: \
  https://googleapis.dev/nodejs/googleapis/latest/ \
  https://developers.google.com/drive/api/quickstart/nodejs \
  https://developers.google.com/youtube/v3/docs/search 
@@ -26,7 +26,7 @@ Be sure you have routed to the /search route.
 You will recieve the title  and videoId, which is the last part of this url https://www.youtube.com/watch?v=, so the complete url would be like this: \
 https://www.youtube.com/watch?v=guMmZrnFx70 \
 title: "Kobe Bryant's Best 40 Dunks Of His NBA Career!" \
-videoId: guMmZrnFx70 \
+videoId: guMmZrnFx70 
 
 You can then embed the video on the page.
 
