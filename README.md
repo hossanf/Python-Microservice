@@ -2,12 +2,33 @@
 
 ## Microservice Request and Recieve Instructions: 
 
+- Runs locally on port: 3000
+
 Here are some helpful links to documentation: \
  https://googleapis.dev/nodejs/googleapis/latest/ \
  https://developers.google.com/drive/api/quickstart/nodejs \
  https://developers.google.com/youtube/v3/docs/search 
+ 
+## Requests: 
 
 To make a request you need to pass the microservice a query stored in the variable searchQuery: 
+
+Example Call:
+```        document.getElementById('search-button').addEventListener('click', async () => {
+            const searchInput = document.getElementById('search-input');
+            const keywords = document.getElementById('keywords');
+            const results = document.getElementById('results');
+
+            const searchQuery = searchInput.value + (keywords.value ? ' ' + keywords.value : '');
+
+            if (searchQuery) {
+                console.log('Client request:', searchQuery); // Log the search query from the client    
+
+                const response = await fetch(`/search?search_query=${encodeURIComponent(searchQuery)}`);
+                const videos = await response.json();
+
+                console.log('Server response:', videos); // Log the response from the server
+```
 
 ![Instructions](https://user-images.githubusercontent.com/72106175/236707582-b77a95f2-0911-4834-ad55-f50b98cd0d5b.png) 
 
