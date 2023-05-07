@@ -1,7 +1,6 @@
 # CS-361: Software Engineering
 
-
-<font size="4"> Microservice Request and Recieve Instructions: </font>
+## Microservice Request and Recieve Instructions: 
 
 Here are some helpful links to documentation: \
  https://googleapis.dev/nodejs/googleapis/latest/ \
