@@ -43,10 +43,17 @@ Be sure you have routed to the /search route.
 
 ![Instructions3](https://user-images.githubusercontent.com/72106175/236707595-cdf29742-a3c6-47d1-974e-d0a7602c49d7.png) 
 
+## Recieve: 
+
 You will recieve the title  and videoId, which is the last part of this url https://www.youtube.com/watch?v=, so the complete url would be like this: \
 https://www.youtube.com/watch?v=guMmZrnFx70 \
 title: "Kobe Bryant's Best 40 Dunks Of His NBA Career!" \
 videoId: guMmZrnFx70 
+
+Example of what you recieve:
+
+![Response](https://user-images.githubusercontent.com/72106175/236708733-d41f10b2-b1d6-4cbd-b12f-01e737356935.png)
+
 
 You can then embed the video on the page.
 
