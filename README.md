@@ -1,5 +1,3 @@
-# CS-361: Software Engineering
-
 ## Microservice Request and Recieve Instructions: 
 
 - Runs locally on port: 3000
