@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .search-form {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        .search-form input,
+        .search-form select,
+        .search-form button {
+            padding: 0.5rem;
+        }
+        .search-form input {
+            flex-grow: 1;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Highlight Search</h1>
+        <form class="search-form">
+            <input type="search" id="search-input" placeholder="Search YouTube">
+            <select id="keywords">
+                <option value="">Select a keyword filter</option>
+                <option value="Dunk">Dunk</option>
+                <option value="Assist">Assist</option>
+                <option value="Steal">Steal</option>
+                <option value="Block">Block</option>
+                <option value="Buzzer Beater">Buzzer Beater</option>
+                <!-- Add more keywords if needed -->
+            </select>
+            <button type="button" id="search-button">Search</button>
+        </form>
+        <ul id="results"></ul>
+    </div>
+
+    <script>
+        document.getElementById('search-button').addEventListener('click', async () => {
+            const searchInput = document.getElementById('search-input');
+            const keywords = document.getElementById('keywords');
+            const results = document.getElementById('results');
+
+
+             // Ternary operator
+             // (keywords.value ? ' ' + keywords.value : ''): This is the ternary conditional expression. 
+             // It checks if keywords.value is truthy ( not an empty string, null, undefined, false, 0, NaN, or -0). 
+             // If it is one of those, it adds a space (' ') followed by the value of keywords.value. Otherwise, it adds an empty string ('').
+             // This expression is to add the search input value and the selected keyword with a space in between if a keyword is selected. 
+             // If no keyword is selected, it will just use the search input value as the searchQuery.
+            const searchQuery = searchInput.value + (keywords.value ? ' ' + keywords.value : '');
+
+            if (searchQuery) {
+                console.log('Client request:', searchQuery); // Log the search query from the client    
+
+                // encodeURIComponent() -  is a built-in JavaScript function that encodes a URI component (such as a query string) 
+                // It replaces special characters with their corresponding percent-encoded (also known as URL-encoded) UTF-8 code. 
+                // This is useful when you need to include user input or other data containing special characters, 
+                // it ensures that the data is properly formatted and won't break the URI structure.
+                // Some characters like spaces, ampersands, and question marks have special meanings and need to be encoded to avoid unexpected behavior. 
+
+                // fecth is a JS built-in function that thats an easier way to make HTTP requests compared XMLHttpRequest. 
+                // It returns a Promise that resolves with a Response object for the request. 
+                // You can then use functions on the Response object to process the data, like .json() to parse the response as JSON
+                const response = await fetch(`/search?search_query=${encodeURIComponent(searchQuery)}`);
+                const videos = await response.json();
+
+                console.log('Server response:', videos); // Log the response from the server
+
+                // Clear the contents of the results 
+                // By setting it to an empty string (''), you're removing any existing content
+                // This ensures that any previous search result is removed from the page before displaying the new result
+                results.innerHTML = '';
+                if (videos.length > 0) {
+                    const video = videos[0];
+                    const iframe = document.createElement('iframe');
+                    iframe.width = '560';
+                    iframe.height = '315';
+                    iframe.src = `https://www.youtube.com/embed/${video.videoId}`;
+                    iframe.title = video.title;
+                    iframe.frameborder = '0';
+                    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                    iframe.allowFullscreen = true;
+
+                    results.innerHTML = ''; // Clear previous results
+                    results.appendChild(iframe);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
